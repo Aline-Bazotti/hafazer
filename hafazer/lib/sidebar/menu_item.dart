@@ -5,7 +5,8 @@ class MenuItem extends StatelessWidget {
   final String title;
   final Function onTap;
 
-  const MenuItem({Key key, this.icon, this.title, this.onTap}) : super(key: key);
+  const MenuItem({Key key, this.icon, this.title, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +19,17 @@ class MenuItem extends StatelessWidget {
             Icon(
               icon,
               color: Colors.cyan,
-              size: 30,
+              size: 28,
             ),
             SizedBox(
               width: 20,
             ),
             Text(
               title,
-              style: TextStyle(fontWeight: FontWeight.w300, fontSize: 26, color: Colors.white),
+              style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 20,
+                  color: Colors.white),
             )
           ],
         ),
