@@ -5,6 +5,7 @@ import '../bloc.navigation_bloc/navigation_bloc.dart';
 class CoisasHafazerPage extends StatelessWidget with NavigationStates {
   @override
   Widget build(BuildContext context) {
+    final maxLines = 5;
     return
     MaterialApp(
        home: Scaffold(
@@ -22,37 +23,54 @@ class CoisasHafazerPage extends StatelessWidget with NavigationStates {
                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                children: [
                  Row(
-                   
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   //Caixa da Tarefa
                   children: <Widget>[
-                    const SizedBox(
+                    Container(
+                      padding: EdgeInsets.all(0),
                       width: 300,
                       height: 70,
-                      child: const DecoratedBox(
-                        decoration: const BoxDecoration(
-                          color: Color(0xffbbbde9)
+                      child: 
+                      TextField(
+                        maxLines: maxLines,
+                        decoration: InputDecoration(
+                          hintText: "Digite o que tem Hafazer",
+                          fillColor: Color(0xffbbbde9),
+                          filled: true,
                         ),
-
                       ),
                     ),
                     Column(
                       children: <Widget>[
-                        RaisedButton(
-                          child: new Icon(Icons.check_rounded),
+                        SizedBox(height: 5,),
+                        Material( 
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(50.0),
+                              topRight: Radius.circular(50.0),),
                           color: Color(0xffbbbde9),
-                          shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                          onPressed: (){},
+                          child: InkWell(
+                            splashColor: Colors.green[900], // inkwell onPress colour
+                            child: SizedBox(
+                              width: 30, height: 25, //customisable size of 'button'
+                              child: Icon(Icons.check_rounded,color: Colors.green[700],size: 20,),),
+                            onTap: () {}, // or use onPressed: () {}
+                          ),
                         ),
-                        RaisedButton(
-                          child: new Icon(Icons.clear_rounded),
+                        SizedBox(height: 10,),
+                        Material( 
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(50.0),
+                              topRight: Radius.circular(50.0),),
                           color: Color(0xffbbbde9),
-                          shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                          onPressed: (){},
-                        )
+                          child: InkWell(
+                            splashColor: Colors.red[900], // inkwell onPress colour
+                            child: SizedBox(
+                              width: 30, height: 25, //customisable size of 'button'
+                              child: Icon(Icons.clear_rounded,color: Colors.red[700],size: 20,),),
+                            onTap: () {}, // or use onPressed: () {}
+                           ),
+                        ),
                       ]
                       
                     )
