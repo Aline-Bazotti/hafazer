@@ -11,8 +11,14 @@ class Passo {
   // métodos getters
   int get id => _id;
   int get codigoMeta => _codigoMeta;
-  String get name => _descricao;
+  String get descricao => _descricao;
   bool get concluido => _concluido;
+
+  factory Passo.fromMap(Map<String, dynamic> json) => new Passo(
+      json["id"],
+      json["codigoMeta"],
+      json["descricao"],
+      json["concluido"].toString().toLowerCase() == 'true');
 
   // para facilitar o insert/update utilizamos o método toMap
   Map<String, dynamic> toMap() {
