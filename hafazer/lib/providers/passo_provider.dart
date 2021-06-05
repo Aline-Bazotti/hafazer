@@ -4,15 +4,18 @@ import 'package:sidebar_animation/repositorys/passo_repository.dart';
 
 class PassoProvider with ChangeNotifier {
   PassoRepository _passoRepository = PassoRepository();
-
-  List<Passo> _passos;
+  int codigoMeta = 1;
+  List<Passo> _passos = [];
 
   PassoProvider(int codigoMeta) {
+    codigoMeta = 1;
     _passoRepository.findAll(codigoMeta).then((passos) => setPassos(passos));
   }
 
   setPassos(List<Passo> passos) {
-    _passos = passos;
+    if (passos != null) {
+      _passos = passos;
+    }
 
     notifyListeners();
   }
@@ -30,14 +33,27 @@ class PassoProvider with ChangeNotifier {
   }
 
   savePasso(Passo passo) {
-    _passoRepository.savePasso(passo);
-  }
+    if (passo.id != null) {
+      _passoRepository.updatePasso(passo);
+    } else {
+      _passoRepository.insertPasso(passo);
+    }
 
-  updatePasso(Passo passo) {
-    _passoRepository.updatePasso(passo);
+    notifyListeners();
   }
 
   deletePasso(Passo passo) {
-    _passoRepository.deletePasso(passo);
+    if (passo != null) {
+      _passoRepository.deletePasso(passo);
+      _passos.remove(passo);
+    }
+
+    notifyListeners();
+  }
+
+  createPasso() {
+    _passos.add(new Passo(null, codigoMeta, "", false));
+
+    notifyListeners();
   }
 }

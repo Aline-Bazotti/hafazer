@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sidebar_animation/models/passo.dart';
+import 'package:sidebar_animation/providers/passo_provider.dart';
 
 class PassoTile extends StatelessWidget {
   final Passo passo;
@@ -9,6 +11,7 @@ class PassoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final PassoProvider passoProvider = Provider.of(context);
     var txt = TextEditingController();
     txt.text = passo.descricao;
     final maxLines = 5;
@@ -52,7 +55,10 @@ class PassoTile extends StatelessWidget {
                   size: 20,
                 ),
               ),
-              onTap: () {}, // or use onPressed: () {}
+              onTap: () {
+                passo.descricao = txt.text;
+                passoProvider.savePasso(passo);
+              }, // or use onPressed: () {}
             ),
           ),
           SizedBox(
@@ -75,7 +81,9 @@ class PassoTile extends StatelessWidget {
                   size: 20,
                 ),
               ),
-              onTap: () {}, // or use onPressed: () {}
+              onTap: () {
+                passoProvider.deletePasso(passo);
+              }, // or use onPressed: () {}
             ),
           ),
         ])

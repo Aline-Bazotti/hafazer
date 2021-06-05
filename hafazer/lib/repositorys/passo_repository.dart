@@ -12,7 +12,7 @@ class PassoRepository {
     return res.isNotEmpty ? res.map((c) => Passo.fromMap(c)).toList() : [];
   }
 
-  Future<Passo> savePasso(Passo p) async {
+  Future<Passo> insertPasso(Passo p) async {
     var dbClient = await _databaseHelper.db;
     int res = await dbClient.insert("passo", p.toMap());
     p.id = res;
