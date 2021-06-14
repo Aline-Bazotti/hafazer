@@ -15,16 +15,18 @@ class CoisasHafazerPage extends StatelessWidget with NavigationStates {
         child: MaterialApp(
           home: Scaffold(
               resizeToAvoidBottomPadding: false,
-              body: Column(children: [
-                Center(
-                    heightFactor: 2,
-                    child: Text(
-                      "Coisas Hafazer",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
-                    )),
-                SizedBox(height: 400, child: PassosView())
-              ]),
+              body: SingleChildScrollView(
+                child: Column(children: [
+                  Center(
+                      heightFactor: 2,
+                      child: Text(
+                        "Coisas Hafazer",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w900, fontSize: 28),
+                      )),
+                  SizedBox(height: 400, child: PassosView())
+                ]),
+              ),
               floatingActionButton: PassoFloatingButton()),
         ));
   }
