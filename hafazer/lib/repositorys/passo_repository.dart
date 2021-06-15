@@ -4,10 +4,11 @@ import 'package:sidebar_animation/models/passo.dart';
 class PassoRepository {
   DatabaseHelper _databaseHelper = DatabaseHelper();
 
-  Future<List<Passo>> findAll(int codigoMeta) async {
+  Future<List<Passo>> findAll(int codigoMeta, int concluido) async {
     var dbClient = await _databaseHelper.db;
-    var res = await dbClient
-        .query('passo', where: '"codigoMeta" = ?', whereArgs: [codigoMeta]);
+    var res = await dbClient.query('passo',
+        where: '"codigoMeta" = ? and "concluido" = ?',
+        whereArgs: [codigoMeta, concluido]);
 
     return res.isNotEmpty ? res.map((c) => Passo.fromMap(c)).toList() : [];
   }

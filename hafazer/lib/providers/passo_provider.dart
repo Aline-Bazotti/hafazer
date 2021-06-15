@@ -9,7 +9,7 @@ class PassoProvider with ChangeNotifier {
 
   PassoProvider(int codigoMeta) {
     codigoMeta = 1;
-    _passoRepository.findAll(codigoMeta).then((passos) => setPassos(passos));
+    _passoRepository.findAll(codigoMeta, 0).then((passos) => setPassos(passos));
   }
 
   setPassos(List<Passo> passos) {
