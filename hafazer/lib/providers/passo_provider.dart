@@ -6,10 +6,12 @@ class PassoProvider with ChangeNotifier {
   PassoRepository _passoRepository = PassoRepository();
   int codigoMeta = 1;
   List<Passo> _passos = [];
+  List<Passo> _passosConcluidos = [];
 
   PassoProvider(int codigoMeta) {
     codigoMeta = 1;
     _passoRepository.findAll(codigoMeta, 0).then((passos) => setPassos(passos));
+    _passoRepository.findAll(codigoMeta, 1).then((passosConcluidos) => setPassosConcluidos(passosConcluidos));
   }
 
   setPassos(List<Passo> passos) {
@@ -20,8 +22,20 @@ class PassoProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  setPassosConcluidos(List<Passo> passosConcluidos) {
+    if (passosConcluidos != null) {
+      _passosConcluidos = passosConcluidos;
+    }
+
+    notifyListeners();
+  }
+
   List<Passo> get all {
     return _passos;
+  }
+
+  List<Passo> get concluidos {
+    return _passosConcluidos;
   }
 
   int get count {

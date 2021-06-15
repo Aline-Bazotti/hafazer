@@ -108,15 +108,15 @@ class _SideBarState extends State<SideBar>
                               NavigationEvents.CoisasHafazerPageClickedEvent);
                         },
                       ),
-                      MenuItem(
-                        icon: Icons.bookmark_border,
-                        title: "Metas Abertas",
-                        onTap: () {
-                          onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context)
-                              .add(NavigationEvents.MetasAbertasClickedEvent);
-                        },
-                      ),
+                      // MenuItem(
+                      //   icon: Icons.bookmark_border,
+                      //   title: "Metas Abertas",
+                      //   onTap: () {
+                      //     onIconPressed();
+                      //     BlocProvider.of<NavigationBloc>(context)
+                      //         .add(NavigationEvents.MetasAbertasClickedEvent);
+                      //   },
+                      // ),
                       Divider(
                         height: 64,
                         thickness: 0.5,
@@ -133,15 +133,15 @@ class _SideBarState extends State<SideBar>
                               NavigationEvents.CoisasFeitasPageClickedEvent);
                         },
                       ),
-                      MenuItem(
-                        icon: Icons.bookmark,
-                        title: "Metas Alcançadas",
-                        onTap: () {
-                          onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context).add(
-                              NavigationEvents.MetasAlcancadasClickedEvent);
-                        },
-                      )
+                      // MenuItem(
+                      //   icon: Icons.bookmark,
+                      //   title: "Metas Alcançadas",
+                      //   onTap: () {
+                      //     onIconPressed();
+                      //     BlocProvider.of<NavigationBloc>(context).add(
+                      //         NavigationEvents.MetasAlcancadasClickedEvent);
+                      //   },
+                      // )
                     ],
                   ),
                 ),
