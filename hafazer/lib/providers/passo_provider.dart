@@ -89,7 +89,12 @@ class PassoProvider with ChangeNotifier {
 
   createPasso() {
     Passo passo = new Passo(null, codigoMeta, "", false);
-    _passoRepository.insertPasso(passo).then((passo) => _passos.add(passo));
+    _passoRepository.insertPasso(passo).then((passo) => adicionarPasso(passo));
+    notifyListeners();
+  }
+
+  adicionarPasso(Passo passo) {
+    _passos.add(passo);
     notifyListeners();
   }
 }
