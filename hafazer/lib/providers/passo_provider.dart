@@ -15,7 +15,9 @@ class PassoProvider with ChangeNotifier {
 
   void buscarDados(int codigoMeta) {
     _passoRepository.findAll(codigoMeta, 0).then((passos) => setPassos(passos));
-    _passoRepository.findAll(codigoMeta, 1).then((passosConcluidos) => setPassosConcluidos(passosConcluidos));
+    _passoRepository
+        .findAll(codigoMeta, 1)
+        .then((passosConcluidos) => setPassosConcluidos(passosConcluidos));
   }
 
   setPassos(List<Passo> passos) {
@@ -67,6 +69,7 @@ class PassoProvider with ChangeNotifier {
     buscarDados(codigoMeta);
     notifyListeners();
   }
+
   savePassoOnChange(Passo passo) {
     if (passo.id != null) {
       _passoRepository.updatePasso(passo);
@@ -85,7 +88,8 @@ class PassoProvider with ChangeNotifier {
   }
 
   createPasso() {
-    _passos.add(new Passo(null, codigoMeta, "", false));
+    Passo passo = new Passo(null, codigoMeta, "", false);
+    _passoRepository.insertPasso(passo).then((passo) => _passos.add(passo));
     notifyListeners();
   }
 }

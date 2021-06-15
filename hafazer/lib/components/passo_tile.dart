@@ -24,7 +24,7 @@ class PassoTile extends StatelessWidget {
           height: 70,
           child: TextField(
             maxLines: maxLines,
-            onChanged: (texto){
+            onChanged: (texto) {
               passo.descricao = texto;
               passoProvider.savePassoOnChange(passo);
             },
