@@ -10,6 +10,10 @@ class PassoProvider with ChangeNotifier {
 
   PassoProvider(int codigoMeta) {
     codigoMeta = 1;
+    buscarDados(codigoMeta);
+  }
+
+  void buscarDados(int codigoMeta) {
     _passoRepository.findAll(codigoMeta, 0).then((passos) => setPassos(passos));
     _passoRepository.findAll(codigoMeta, 1).then((passosConcluidos) => setPassosConcluidos(passosConcluidos));
   }
@@ -46,14 +50,29 @@ class PassoProvider with ChangeNotifier {
     return _passos.length;
   }
 
+  int get countConcluidos {
+    if (_passosConcluidos == null) {
+      return 0;
+    }
+
+    return _passosConcluidos.length;
+  }
+
   savePasso(Passo passo) {
     if (passo.id != null) {
       _passoRepository.updatePasso(passo);
     } else {
       _passoRepository.insertPasso(passo);
     }
-
+    buscarDados(codigoMeta);
     notifyListeners();
+  }
+  savePassoOnChange(Passo passo) {
+    if (passo.id != null) {
+      _passoRepository.updatePasso(passo);
+    } else {
+      _passoRepository.insertPasso(passo);
+    }
   }
 
   deletePasso(Passo passo) {
@@ -61,13 +80,12 @@ class PassoProvider with ChangeNotifier {
       _passoRepository.deletePasso(passo);
       _passos.remove(passo);
     }
-
+    buscarDados(codigoMeta);
     notifyListeners();
   }
 
   createPasso() {
     _passos.add(new Passo(null, codigoMeta, "", false));
-
     notifyListeners();
   }
 }

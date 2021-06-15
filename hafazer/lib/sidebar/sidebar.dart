@@ -78,7 +78,7 @@ class _SideBarState extends State<SideBar>
                       ),
                       ListTile(
                         title: Text(
-                          "João Doido",
+                          "Usuário",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,

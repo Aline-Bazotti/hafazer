@@ -9,11 +9,11 @@ class PassosConcluidosView extends StatelessWidget {
   Widget build(BuildContext context) {
     final PassoProvider passoProvider = Provider.of(context);
     return Container(
-        height: passoProvider.concluidos.length * 100.0,
+        height: passoProvider.countConcluidos * 100.0,
         child: ListView.builder(
           itemBuilder: (BuildContext context, int index) =>
               PassoConcluidoTile(passoProvider.concluidos.elementAt(index)).build(context),
-          itemCount: passoProvider.count,
+          itemCount: passoProvider.countConcluidos,
         ));
   }
 }

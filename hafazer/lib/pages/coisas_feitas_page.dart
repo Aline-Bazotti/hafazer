@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sidebar_animation/components/passo_floating_button.dart';
 import 'package:sidebar_animation/models/passo.dart';
 import 'package:sidebar_animation/providers/passo_provider.dart';
+import 'package:sidebar_animation/views/passos_concluidos_view.dart';
 import 'package:sidebar_animation/views/passos_view.dart';
 
 import '../bloc.navigation_bloc/navigation_bloc.dart';
@@ -23,9 +24,9 @@ class CoisasFeitasPage extends StatelessWidget with NavigationStates {
                       style:
                           TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
                     )),
-                SizedBox(height: 400, child: PassosView())
+                SizedBox(height: 400, child: PassosConcluidosView())
               ]),
-              floatingActionButton: PassoFloatingButton()),
+              ),
         ));
   }
 }

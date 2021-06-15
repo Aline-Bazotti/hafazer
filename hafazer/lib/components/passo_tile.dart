@@ -12,8 +12,6 @@ class PassoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PassoProvider passoProvider = Provider.of(context);
-    var txt = TextEditingController();
-    txt.text = passo.descricao;
     final maxLines = 5;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +24,10 @@ class PassoTile extends StatelessWidget {
           height: 70,
           child: TextField(
             maxLines: maxLines,
-            controller: txt,
+            onChanged: (texto){
+              passo.descricao = texto;
+              passoProvider.savePassoOnChange(passo);
+            },
             decoration: InputDecoration(
               hintText: "Digite o que tem Hafazer",
               fillColor: Color(0xffbbbde9),
@@ -56,7 +57,7 @@ class PassoTile extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                passo.descricao = txt.text;
+                passo.concluido = true;
                 passoProvider.savePasso(passo);
               }, // or use onPressed: () {}
             ),

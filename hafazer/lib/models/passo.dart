@@ -8,6 +8,7 @@ class Passo {
 
   set id(int id) => _id = id;
   set descricao(String descricao) => _descricao = descricao;
+  set concluido(bool concluido) => _concluido = concluido;
 
   // métodos getters
   int get id => _id;
