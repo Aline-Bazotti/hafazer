@@ -6,7 +6,8 @@ import 'package:sidebar_animation/providers/passo_provider.dart';
 
 class PassoTile extends StatelessWidget {
   final Passo passo;
-
+  var txt = TextEditingController();
+  txt.text = passo.descricao;
   const PassoTile(this.passo);
 
   @override
@@ -24,6 +25,7 @@ class PassoTile extends StatelessWidget {
           height: 70,
           child: TextField(
             maxLines: maxLines,
+            controller: txt,
             onChanged: (texto) {
               passo.descricao = texto;
               passoProvider.savePassoOnChange(passo);
