@@ -6,13 +6,13 @@ import 'package:sidebar_animation/providers/passo_provider.dart';
 
 class PassoTile extends StatelessWidget {
   final Passo passo;
-  var txt = TextEditingController();
-  txt.text = passo.descricao;
   const PassoTile(this.passo);
 
   @override
   Widget build(BuildContext context) {
     final PassoProvider passoProvider = Provider.of(context);
+    var txt = TextEditingController();
+    txt.text = passo.descricao;
     final maxLines = 5;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
