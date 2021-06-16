@@ -1,4 +1,4 @@
-package com.example.hafazer
+package br.com.hafazer
 
 import io.flutter.embedding.android.FlutterActivity
 
