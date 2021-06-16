@@ -17,6 +17,9 @@ class CoisasHafazerPage extends StatelessWidget with NavigationStates {
               resizeToAvoidBottomPadding: false,
               body: SingleChildScrollView(
                 child: Column(children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.08,
+                  ),
                   Center(
                       heightFactor: 2,
                       child: Text(
@@ -24,7 +27,9 @@ class CoisasHafazerPage extends StatelessWidget with NavigationStates {
                         style: TextStyle(
                             fontWeight: FontWeight.w900, fontSize: 28),
                       )),
-                  SizedBox(height: 400, child: PassosView())
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.795,
+                      child: PassosView())
                 ]),
               ),
               floatingActionButton: PassoFloatingButton()),

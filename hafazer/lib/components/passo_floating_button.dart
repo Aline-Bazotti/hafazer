@@ -13,7 +13,7 @@ class PassoFloatingButton extends StatelessWidget {
         passoProvider.createPasso();
       },
       child: const Icon(Icons.add_rounded, color: Colors.black, size: 36),
-      backgroundColor: Color(0xff38e95f),
+      backgroundColor: Colors.greenAccent,
     );
   }
 }
